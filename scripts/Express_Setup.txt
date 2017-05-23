@@ -1,0 +1,26 @@
+on run argv
+	set userName to do shell script "whoami"
+	display dialog "Enter the path of the workspace" default answer "Documents/JSworkspace"
+	set folderPath to text returned of result
+	display dialog "Enter the name of the project" default answer "Website"
+	set folderName to text returned of result
+	set command to {"cd " & folderPath, "express " & folderName & " --ejs", "cd " & folderName, "npm install", "npm start"}
+	set rpt to true
+	tell application "Terminal"
+		do script " "
+		repeat with cmd in command
+			do script cmd in window 1
+			delay 3
+		end repeat
+		set rpt to false
+	end tell
+	
+	repeat while rpt
+		delay 1
+	end repeat
+	
+	tell application "Google Chrome"
+		delay 1
+		open location "http://localhost:3000/"
+	end tell
+end run

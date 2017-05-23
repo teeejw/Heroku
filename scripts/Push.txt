@@ -1,0 +1,15 @@
+tell application "Finder"
+	set curPath to container of (path to me) as alias
+end tell
+set myPath to (the POSIX path of curPath)
+
+display dialog "Enter commit name" default answer "Update"
+set commitName to text returned of result
+
+tell application "Terminal"
+	do script "cd " & myPath
+	do script "git commit -a -m \"" & commitName & "\"" in window 1
+	do script "git push heroku master" in window 1
+	do script "git push" in window 1
+	do script "heroku open" in window 1
+end tell

@@ -1,0 +1,38 @@
+on run argv
+	set originalVolume to output volume of (get volume settings)
+	set volume output volume 25
+	set chk to false
+	try
+		item 1 of argv
+		set chk to true
+		item 2 of argv
+		display dialog "Too many arguments"
+		set chk to false
+	end try
+	if chk then
+		set CountDown to item 1 of argv
+	else
+		display dialog "Enter the count down length..." default answer "10" buttons {"Yeeet!", "nahh"} default button 1
+		set CountDown to text returned of result
+	end if
+	repeat CountDown times
+		set start_value to do shell script "ruby -e 'print Time.now.to_f'"
+		set firstTime to true
+		repeat while true
+			if firstTime then
+				say CountDown
+				set CountDown to CountDown - 1
+				set firstTime to false
+			end if
+			set end_value to do shell script "ruby -e 'print Time.now.to_f'"
+			if end_value - start_value ³ 0.91 then --offset becase it takes slightly longer than 1 second
+				exit repeat
+			end if
+		end repeat
+	end repeat
+	set volume output volume 75
+	say "BOOM!" using "Bad News"
+	set volume output volume originalVolume
+end run
+
+
