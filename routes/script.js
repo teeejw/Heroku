@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(request, response) {
-    response.render('script');
+    response.render('pages/script');
 });
 
 module.exports = router;
