@@ -1,18 +1,30 @@
 <!DOCTYPE html>
 <html>
-  <head>
-    <% include ../partials/header.ejs %>
-  </head>
-  <body>
+    <head>
+        <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.11.0/styles/agate.min.css">
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
+        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/applescript.min.js"></script>
+        <script>hljs.initHighlightingOnLoad();</script>
 
-    <% include ../partials/nav.ejs %>
+        <% include ../partials/header.ejs %>
+    </head>
 
-    <div>
-        <h1> Scripts </h1>
-
-        <div class="jumbotron text-center">
-            <p> checking to seee if it is actually fixed</p>
+    <body>
+        <% include ../partials/nav.ejs %>
+        <div>
+            <h1> Scripts </h1>
+            <p> This script pushes local changes to the website and updates github </p>
         </div>
-    </div>
-  </body>
+
+        <div>
+            <pre><code class="applescript">
+                tell application "Terminal"
+                	do script "cd " & myPath
+                	do script "git commit -a -m \"" & commitName & "\"" in window 1
+                	do script "git push heroku master" in window 1
+                	do script "git push" in window 1
+                	do script "heroku open" in window 1
+                end tell
+            </code></pre>
+    </body>
 </html>

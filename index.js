@@ -1,5 +1,6 @@
 var express = require('express');
 var app = express();
+var hl = require("highlight").Highlight;
 
 var cool = require('cool-ascii-faces');
 var script = require('./routes/script')
