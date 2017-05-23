@@ -11,20 +11,39 @@
 
     <body>
         <% include ../partials/nav.ejs %>
-        <div>
+        <div class="jumbotron text-center">
             <h1> Scripts </h1>
-            <p> This script pushes local changes to the website and updates the github repository</p>
         </div>
 
-        <div>
-            <pre><code class="applescript">
-                tell application "Terminal"
-                	do script "cd " & myPath
-                	do script "git commit -a -m \"" & commitName & "\"" in window 1
-                	do script "git push heroku master" in window 1
-                	do script "git push" in window 1
-                	do script "heroku open" in window 1
-                end tell
-            </code></pre>
+        <div class="container">
+            <div class="jumbotron" style="background:#3891EA">
+                <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
+                    <h2> Push </h2>
+                    <div style="font-size:18px;height:40px"> This script pushes local changes to the website and updates the github repository </div>
+                    <div class="well" style="background:white;font-size:16px">
+                        <ul style="color: black; font-family: helvetica">
+                            <li>This first step is to get the current file path</li>
+                            <ul><li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it can be written in a Terminal command</li></ul>
+                            <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
+                            <li>Now the script is ready to begin executing Terminal commands</li>
+                            <ul>
+                                <li>It opens Terminal in a new window and executes each command with <code>do script</code></li>
+                                <ul>
+                                    <li>After the first, each command is followed by <code>in window 1</code> to ensure that all of the commands are entered into the new terminal window</li>
+                                </ul>
+                                <li>First we move to the current file path</li>
+                                <li>Then we commit the update and push it to heroku and git</li>
+                                <li>Finally, we open the webpage with <code>heroku open</code></li>
+                            </ul>
+                        </ul>
+                        <div style="color:black"> Note: To run this script place it in your project folder. Then open terminal, navigate to your project, and enter the command <code>osascript push.scpt</code></div>
+                    </div>
+                </div>
+                <pre><code class="applescript"><% include ../../scripts/Push.txt %></code></pre></div>
+                <div class="container"><pre><code class="applescript"><% include ../../scripts/Express_Setup.txt %></pre></code></div>
+                <div class="container"><pre><code class="applescript"><% include ../../scripts/Express_Setup.txt %></pre></code></div>
+                <div class="container"><pre><code class="applescript"><% include ../../scripts/Express_Setup.txt %></pre></code></div>
+            </div>
+        </div>
     </body>
 </html>

@@ -1,7 +1,8 @@
 .jumbotron {
   color: white;
   background: #16247C;
-  padding-bottom: 40px; }
+  padding-top: 20px;
+  padding-bottom: 20px; }
   .jumbotron .btn-primary {
     color: white;
     background: #3891EA;
