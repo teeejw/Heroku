@@ -1,0 +1,14 @@
+-- TODO: tell front window + add hotkey
+
+tell application "System Events"
+	tell process "Finder"
+		set windowList to every window
+		set initial_offset to 22 #the height of the menu bar
+		set cascade_offset to 40
+		set counter to 0
+		repeat with win in windowList
+			set position of win to {(counter * cascade_offset), (initial_offset + counter * cascade_offset)}
+			set counter to (counter + 1)
+		end repeat
+	end tell
+end tell
