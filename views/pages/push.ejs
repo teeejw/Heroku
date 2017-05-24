@@ -21,7 +21,13 @@
                     <h2> Push </h2>
                     <div style="font-size: 18px; height: 100%"> This script pushes local changes to the website and updates the github repository </div>
                     <div class="well" style="background: white; font-size: 16px">
+                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; font-family:Gilbert sans-serif">
+                            TODO: Select the current front window instead of just finder </br>
+                            <text style="padding-left:1em"></text>Optional: turn into new program that promts where the window should go (top, full, left, top-left, etc...)
+                        </text>
+                        <hr/>
                         <ul style="color: black; font-family: helvetica">
+                            <b>Steps</b>
                             <li>This first step is to get the current file path</li>
                             <ul><li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it can be written in a Terminal command</li></ul>
                             <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
@@ -40,9 +46,12 @@
                     </div>
                 </div>
                 <pre>Push.scpt<code class="applescript"><% include ../../scripts/Push.txt %></code></pre></div>
-                <div class="container"><pre><code class="applescript"><% include ../../scripts/Express_Setup.txt %></pre></code></div>
-                <div class="container"><pre><code class="applescript"><% include ../../scripts/CountDown.txt %></pre></code></div>
-                <div class="container"><pre><code class="applescript"><% include ../../scripts/Cascade_Windows.txt %></pre></code></div>
+
+                <div class="jumbotron">
+                    <h2> Some other scritps </h2>
+                    <div class="container"><pre>Express_Setup.scpt<code class="applescript"><% include ../../scripts/Express_Setup.txt %></pre></code></div>
+                    <div class="container"><pre>CountDown.scpt<code class="applescript"><% include ../../scripts/CountDown.txt %></pre></code></div>
+                </div>
             </div>
         </div>
     </body>
