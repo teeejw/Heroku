@@ -18,10 +18,6 @@ app.get('/', function(request, response) {
   response.render('pages/index');
 });
 
-app.get('/cool', function(request, response) {
-  response.send(cool());
-});
-
 app.use('/push', push);
 app.use('/cascade', cascade);
 app.use('/various', various);
