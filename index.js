@@ -4,6 +4,7 @@ var app = express();
 var cool = require('cool-ascii-faces');
 var push = require('./routes/push');
 var cascade = require('./routes/cascade');
+var various = require('./routes/various');
 
 app.set('port', (process.env.PORT || 5000));
 
@@ -23,6 +24,7 @@ app.get('/cool', function(request, response) {
 
 app.use('/push', push);
 app.use('/cascade', cascade);
+app.use('/various', various);
 
 app.listen(app.get('port'), function() {
   console.log('Node app is running on port', app.get('port'));

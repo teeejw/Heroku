@@ -38,3 +38,8 @@
 code {
     color: #DD0000;
 }
+ul {
+    list-style-type: none;
+    color: black;
+    font-family: helvetica
+}
