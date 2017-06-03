@@ -1,62 +1,67 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.11.0/styles/agate.min.css">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/applescript.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-
-        <% include ../partials/header.ejs %>
-    </head>
-
-    <body>
-        <% include ../partials/nav.ejs %>
-        <div class="jumbotron text-center">
-            <h1>Push</h1>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/script.css" />
+  </head>
+  <body>
+    <% include ../partials/nav.ejs %>
+    <div class="jumbotron text-center">
+      <h1>Push</h1>
+    </div>
+    <div class="container">
+      <div class="jumbotron" style="background:#3891EA">
+        <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
+          <h4>This script pushes local changes to the website and updates the github repository</h4>
+          <div class="well">
+            <text>It works for <b>Macintosh</b> users developing a <b>Heroku</b> website linked to a <b>github</b> repository to quickly push their local changes.</text>
+            <hr/>
+            <text class="bolder">Process:</text>
+            <ul>
+              <li>First we need to get the current file path</li>
+              <ul>
+                <li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it is a valid file path when written in a Terminal command</li>
+              </ul>
+              <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
+              <li>Now we define a list of terminal commands</li>
+              <ul>
+                <li>The command for our commit looks like <code>git commit -am "MESSAGE TEXT"</code>. This command contains a <code>"</code> so we need to escape the character using <code>\</code> otherwise it will be interpreted as deliminating string</li>
+                <li>The character <code>&</code> is included to concatinate our variables for the path and commitMSG with our hard-coded commands</li>
+              </ul>
+              <li>Now the script is ready to begin executing Terminal commands</li>
+              <li>It opens Terminal in a new window and executes the command <code>do script " "</code></li>
+              <ul>
+                <li>This command opens a new terminal window for us to excecute commands in</li>
+              </ul>
+              <li>Then we loop through our list, executing each line of code followed by <code>in window 1</code> to ensure that all of the commands are entered into the correct terminal window</li>
+              <ul>
+                <li>First we move to the current file path</li>
+                <li>Then we commit the update and push it to heroku and git</li>
+                <li>Finally, we open the webpage with <code>heroku open</code></li>
+              </ul>
+            </ul>
+          </div>
         </div>
-
-        <div class="container">
-            <div class="jumbotron" style="background:#3891EA">
-                <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
-                    <h4 style="padding-bottom:10px; padding-left:20px">This script pushes local changes to the website and updates the github repository</h4>
-                    <div class="well" style="background: #E0E0DD; font-size: 16px;">
-                        <text style="color: black; height:min; padding-bottom: 20px; font-size:18px; line-height: 75%">It works for <b>Macintosh</b> users developing a <b>Heroku</b> website linked to a <b>github</b> repository to quickly push their local changes.</text>
-                        <hr/>
-                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; line-height: 75%;font-weight: 900">Process:</text>
-                        <ul>
-                            <li>First we need to get the current file path</li>
-                            <ul>
-                                <li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it is a valid file path when written in a Terminal command</li>
-                            </ul>
-                            <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
-                            <li>Now we define a list of terminal commands</li>
-                            <ul>
-                                <li>The command for our commit looks like <code>git commit -am "MESSAGE TEXT"</code>. This command contains a <code>"</code> so we need to escape the character using <code>\</code> otherwise it will be interpreted as deliminating string</li>
-                                <li>The character <code>&</code> is included to concatinate our variables for the path and commitMSG with our hard-coded commands</li>
-                            </ul>
-                            <li>Now the script is ready to begin executing Terminal commands</li>
-                            <li>It opens Terminal in a new window and executes the command <code>do script " "</code></li>
-                            <ul>
-                                <li>This command opens a new terminal window for us to excecute commands in</li>
-                            </ul>
-                            <li>Then we loop through our list, executing each line of code followed by <code>in window 1</code> to ensure that all of the commands are entered into the correct terminal window</li>
-                            <ul>
-                                <li>First we move to the current file path</li>
-                                <li>Then we commit the update and push it to heroku and git</li>
-                                <li>Finally, we open the webpage with <code>heroku open</code></li>
-                            </ul>
-                        </ul>
-                        <div style="color:black">
-                            <b><ins>Note:</ins></b></br>
-                            <div style="padding-left:1em">
-                                <text style="padding-left:1em">To run this script<a href="/"> download </a>it or copy and paste the code into a file, then and save it as a <code>.scpt</code> file in your project folder. Then open terminal, navigate to your project, and enter the command <code>osascript push.scpt</code></text></br>
-                                <text style="padding-left:1em">If you have added an files or folders since your laster commit you must navigate to the new folder/files and use the command <code>git add $file</code></text>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-                <pre>Push.scpt<code class="applescript"><% include ../../scripts/Push.txt %></code></pre></div>
-            </div>
+        <pre>Push.scpt<code class="applescript"><% include ../../scripts/Push.txt %></code></pre>
+        <div class="jumbotron">
+          <div class="well">
+            <text class="bolder">Note:</text>
+            <ul>
+              <li>To run this script:</li>
+              <ol>
+                <li><a href="/">Download </a>the script or copy and paste the code into a file</li>
+                <li>Save it as a <code>.scpt</code> file in your project folder</li>
+                <li>Open terminal:</li>
+                <ul>
+                  <li>Navigate to your project</li>
+                  <li>Enter the command: <code>osascript push.scpt</code></li>
+                </ul>
+              </ol>
+              <li>If you have added an files or folders since your laster commit you must navigate to the new folder/files and use the command <code>git add $file</code></li>
+            </ul>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
