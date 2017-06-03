@@ -35,3 +35,6 @@
       left: 50%;
       transform: translate(-62%, -50%);
       max-width: 80%; }
+code {
+    color: #DD0000;
+}

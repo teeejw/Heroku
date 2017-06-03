@@ -19,30 +19,41 @@
             <div class="jumbotron" style="background:#3891EA">
                 <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
                     <h2> Push </h2>
-                    <div style="font-size: 18px; height: 100%"> This script pushes local changes to the website and updates the github repository </div>
-                    <div class="well" style="background: white; font-size: 16px">
-                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; font-family:Gilbert sans-serif">
-                            TODO: Select the current front window instead of just finder </br>
-                            <text style="padding-left:1em"></text>Optional: turn into new program that promts where the window should go (top, full, left, top-left, etc...)
-                        </text>
+                    <div style="font-size: 18px; height: 100%">This script pushes local changes to the website and updates the github repository</div>
+                    <div class="well" style="background: #E0E0DD; font-size: 16px;">
+                        <text style="color: black; height:min; padding-bottom: 20px; font-size:18px; line-height: 75%">This script allows <b>Macintosh</b> users developing a <b>Heroku</b> website linked to a <b>github</b> repository to quickly push their local changes.</text>
                         <hr/>
+                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; line-height: 75%;font-weight: 900">Process:</text>
                         <ul style="color: black; font-family: helvetica">
-                            <b>Steps</b>
-                            <li>This first step is to get the current file path</li>
-                            <ul><li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it can be written in a Terminal command</li></ul>
-                            <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
-                            <li>Now the script is ready to begin executing Terminal commands</li>
+                            <li>First we need to get the current file path</li>
                             <ul>
-                                <li>It opens Terminal in a new window and executes each command with <code>do script</code></li>
-                                <ul>
-                                    <li>After the first, each command is followed by <code>in window 1</code> to ensure that all of the commands are entered into the new terminal window</li>
-                                </ul>
+                                <li>Then it is converted to <a href="https://stackoverflow.com/a/1780614" >POSIX </a> so it is a valid file path when written in a Terminal command</li>
+                            </ul>
+                            <li>Then the script prompts for the commit message with a dialog box and the input is set to commitName</li>
+                            <li>Now we define a list of terminal commands</li>
+                            <ul>
+                                <li>The command for our commit looks like <code>git commit -am "MESSAGE TEXT"</code>. This command contains a <code>"</code> so we need to escape the character using <code>\</code> otherwise it will be interpreted as deliminating string</li>
+                                <li>The character <code>&</code> is included to concatinate our variables for the path and commitMSG with our hard-coded commands</li>
+                            </ul>
+                            <li>Now the script is ready to begin executing Terminal commands</li>
+                            <li>It opens Terminal in a new window and executes the command <code>do script " "</code></li>
+                            <ul>
+                                <li>This command opens a new terminal window for us to excecute commands in</li>
+                            </ul>
+                            <li>Then we loop through our list, executing each line of code followed by <code>in window 1</code> to ensure that all of the commands are entered into the correct terminal window</li>
+                            <ul>
                                 <li>First we move to the current file path</li>
                                 <li>Then we commit the update and push it to heroku and git</li>
                                 <li>Finally, we open the webpage with <code>heroku open</code></li>
                             </ul>
                         </ul>
-                        <div style="color:black"> Note: To run this script place it in your project folder. Then open terminal, navigate to your project, and enter the command <code>osascript push.scpt</code></div>
+                        <div style="color:black">
+                            <b><ins>Note:</ins></b></br>
+                            <div style="padding-left:1em">
+                                <text style="padding-left:1em">To run this script<a href="/"> download </a>it or copy and paste the code into a file, then and save it as a <code>.scpt</code> file in your project folder. Then open terminal, navigate to your project, and enter the command <code>osascript push.scpt</code></text></br>
+                                <text style="padding-left:1em">If you have added an files or folders since your laster commit you must navigate to the new folder/files and use the command <code>git add $file</code></text>
+                            </div>
+                        </div>
                     </div>
                 </div>
                 <pre>Push.scpt<code class="applescript"><% include ../../scripts/Push.txt %></code></pre></div>

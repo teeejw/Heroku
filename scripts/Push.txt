@@ -3,13 +3,15 @@ tell application "Finder"
 end tell
 set myPath to (the POSIX path of curPath)
 
-display dialog "Enter commit name" default answer "Update"
-set commitName to text returned of result
+display dialog "Enter commit message" default answer "Update"
+set commitMSG to text returned of result
+
+--terminal commands
+set commands to {"cd " & myPath, "git commit -am \"" & commitMSG & "\"", "git push heroku master", "git push", "heroku open"}
 
 tell application "Terminal"
-	do script "cd " & myPath
-	do script "git commit -a -m \"" & commitName & "\"" in window 1
-	do script "git push heroku master" in window 1
-	do script "git push" in window 1
-	do script "heroku open" in window 1
+	do script " "
+	repeat with cmd in commands
+		do script cmd in window 1
+	end repeat
 end tell
