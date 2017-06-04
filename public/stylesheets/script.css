@@ -8,6 +8,9 @@
 #inner {
   background: radial-gradient(ellipse, #16247C 0%, #3891EA 100%);
   padding-bottom:0%; }
+  #inner:hover {
+    background: radial-gradient(ellipse, #16247C 0%, #3891EA 80%);
+  }
   .jumbotron h4 {
     margin-top: -5px;
     padding-bottom: 5px;}
