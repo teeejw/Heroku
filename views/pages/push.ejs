@@ -10,13 +10,12 @@
       <h1>Push</h1>
     </div>
     <div class="container">
-      <div class="jumbotron" style="background:#3891EA">
+      <div class="jumbotron" id="inner">
         <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
-          <h4>This script pushes local changes to the website and updates the github repository</h4>
           <div class="well">
-            <text>It works for <b>Macintosh</b> users developing a <b>Heroku</b> website linked to a <b>github</b> repository to quickly push their local changes.</text>
+            <text>This script pushes local changes to the website and updates the github repository. It works for <b>Macintosh</b> users developing a <b>Heroku</b> website linked to a <b>github</b> repository to quickly push their local changes.</text>
             <hr/>
-            <text class="bolder">Process:</text>
+            <text id="bolder">Process:</text>
             <ul>
               <li>First we need to get the current file path</li>
               <ul>
@@ -43,13 +42,14 @@
           </div>
         </div>
         <pre>Push.scpt<code class="applescript"><% include ../../scripts/Push.txt %></code></pre>
+        <div id="space"></div>
         <div class="jumbotron">
           <div class="well">
-            <text class="bolder">Note:</text>
+            <text id="bolder">Note:</text>
             <ul>
               <li>To run this script:</li>
               <ol>
-                <li><a href="/">Download </a>the script or copy and paste the code into a file</li>
+                <li>C opy and paste the code into a file</li>
                 <li>Save it as a <code>.scpt</code> file in your project folder</li>
                 <li>Open terminal:</li>
                 <ul>

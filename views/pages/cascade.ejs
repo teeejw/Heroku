@@ -1,48 +1,57 @@
 <!DOCTYPE html>
 <html>
-    <head>
-        <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.11.0/styles/agate.min.css">
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/highlight.min.js"></script>
-        <script src="//cdnjs.cloudflare.com/ajax/libs/highlight.js/9.11.0/languages/applescript.min.js"></script>
-        <script>hljs.initHighlightingOnLoad();</script>
-
-        <% include ../partials/header.ejs %>
-        <link rel="stylesheet" type="text/css" href="/stylesheets/main.css" />
-    </head>
-
-    <body>
-        <% include ../partials/nav.ejs %>
-        <div class="jumbotron text-center">
-            <h1> Scripts </h1>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/script.css" />
+  </head>
+  <body>
+    <% include ../partials/nav.ejs %>
+    <div class="jumbotron text-center">
+      <h1>Cascade Windows</h1>
+    </div>
+    <div class="container">
+      <div class="jumbotron" id="inner">
+        <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
+          <div class="well">
+            <text>This script organizes your finder windows cascading down and to the right from the top left corner of the screen.<br/><br/>TODO: Select the current front window instead of just finder</br>
+            <text style="padding-left:1em"></text>Optional: turn into new program that promts where the window should go (top, full, left, top-left, etc...)</text>
+            <hr/>
+            <text class="bolder">Process:</text>
+            <ul>
+              <li>The first thing the script does it make a list of every finder window</li>
+              <li>Then it intializes the offsets</li>
+              <ul>
+                <li>The <code>initial_offset</code> is to move down to the bottom of the menu bar</li>
+                <li>The <code>cascade_offset</code> is how far apart the windows are spaced</li>
+                <ul>
+                  <li>This is useful when you want to change the cascade spacing</li>
+                </ul>
+              </ul>
+              <li>Then we loop through each window and place it at the current offset</li>
+              <li>We use a counter to generate new offsets for each window by mutiplying the cascade_offset by the current counter valvue</li>
+            </ul>
+          </div>
         </div>
-
-        <div class="container">
-            <div class="jumbotron" style="background:#3891EA">
-                <div class="jumbotron text-left" style="height:100%; padding-bottom:0%">
-                    <h2> Cascade Finder Windows </h2>
-                    <div class="well" style="background: #E0E0DD; font-size: 16px">
-                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; line-height: 75%">This script organizes your finder windows cascading down and to the right from the top left corner of the screen.<br/><br/>TODO: Select the current front window instead of just finder</br>
-                        <text style="padding-left:1em"></text>Optional: turn into new program that promts where the window should go (top, full, left, top-left, etc...)</text>
-                        <hr/>
-                        <text style="color: black; height:min; padding-bottom:20px; font-size:18px; line-height: 75%;font-weight: 900">Process:</text>
-                        <ul style="color: black; font-family: helvetica">
-                            <li>The first thing the script does it make a list of every finder window</li>
-                            <li>Then it intializes the offsets</li>
-                            <ul>
-                                <li>The <code>initial_offset</code> is to move down to the bottom of the menu bar</li>
-                                <li>The <code>cascade_offset</code> is how far apart the windows are spaced</li>
-                                <ul>
-                                    <li>This is useful when you want to change the cascade spacing</li>
-                                </ul>
-                            </ul>
-                            <li>Then we loop through each window and place it at the current offset</li>
-                                <li>We use a counter to generate new offsets for each window by mutiplying the cascade_offset by the current counter valvue</li>
-                        </ul>
-                        <div style="color:black"> Note: To run this script place it in your project folder. Then open terminal, navigate to your project, and enter the command <code>osascript push.scpt</code></div>
-                    </div>
-                </div>
-                <pre>Cascade_Windows.scpt<code class="applescript"><% include ../../scripts/Cascade_Windows.txt %></code></pre></div>
-            </div>
+        <pre>Cascade_Windows.scpt<code class="applescript"><% include ../../scripts/Cascade_Windows.txt %></code></pre>
+        <div id="space"></div>
+        <div class="jumbotron">
+          <div class="well">
+            <text class="bolder">Note:</text>
+            <ul>
+              <li>To run this script:</li>
+              <ol>
+                <li>Copy and paste the code into a file</li>
+                <li>Save it as a <code>.scpt</code> file in your project folder</li>
+                <li>Open terminal:</li>
+                <ul>
+                  <li>Navigate to your project</li>
+                  <li>Enter the command: <code>osascript cascade_windows.scpt</code></li>
+                </ul>
+              </ol>
+            </ul>
+          </div>
         </div>
-    </body>
+      </div>
+    </div>
+  </body>
 </html>
