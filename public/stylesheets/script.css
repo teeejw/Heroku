@@ -6,7 +6,8 @@
   width: 100%;
   height: 100%; }
 #inner {
-  background: radial-gradient(ellipse, #16247C 0%, #3891EA 100%); }
+  background: radial-gradient(ellipse, #16247C 0%, #3891EA 100%);
+  padding-bottom:0%; }
   .jumbotron h4 {
     margin-top: -5px;
     padding-bottom: 5px;}
