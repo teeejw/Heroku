@@ -7,7 +7,7 @@
   <body>
   <% include ../partials/nav.ejs %>
   <div class="jumbotron text-center">
-    <div class="container" style="margin-top:-10px; margin-bottom:-10px">
+    <div class="container" style="margin-top:-10px; margin-bottom:-10px"> <!move to sheet>
       <a href="/" class="lang-logo">
         <img src="/logo.png"/>
         <a href="https://pixlr.com/" target="_blank" style="font-size:10px; color: #ffffff;">Made with Pixler</a>
@@ -17,7 +17,33 @@
       <a type="button" class="btn btn-lg btn-secondary" href="https://github.com/teeejw" target="_blank"><span class="glyphicon glyphicon-link"></span> My GitHub page </a>
     </div>
   </div>
-  <div class="container">
+  <div id="display">
+    <a href="/push">
+      <div class="col-md-4">
+        <div class="jumbotron" id="box">
+          <h4 id="box-title">Push</h4>
+          <div class="well">
+            <text> This is sample text </text>
+          </div>
+        </div>
+      </div>
+    </a>
+    <a href="/cascade">
+      <div class="col-md-4">
+        <div class="jumbotron" id="box">
+          <h4 id="box-title">Cascade Windows</h4>
+        </div>
+      </div>
+    </a>
+    <a href="/various">
+      <div class="col-md-4">
+        <div class="jumbotron" id="box">
+          <h4 id="box-title">Other Scripts</h4>
+        </div>
+      </div>
+    </a>
+  </div>
+  <div class="container" id="padded-container">
     <div class="row">
       <div class="alert alert-info text-center"> These scripts will only work if you are using a <b>Macintosh</b> computer.</div>
       <div class="col-md-6">

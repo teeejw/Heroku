@@ -27,7 +27,8 @@
   margin-bottom: 30px;
 }
 h1 {
-  text-shadow: 3px 2px #222222; }
+  text-shadow: 3px 2px #222222;
+  padding-bottom: 20px}
 body {
   background: linear-gradient(180deg, rgba(240,240,240,.85) 0%, rgba(180,180,180,.85) 100%); }
 code {

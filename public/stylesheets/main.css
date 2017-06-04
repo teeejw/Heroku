@@ -31,6 +31,25 @@
       left: 50%;
       transform: translate(-62%, -50%);
       max-width: 80%; }
+#display {
+  height: 100%; }
+#box {
+  background: linear-gradient(45deg, rgba(22,36,124,0.9) 0%, rgba(56,145,234,0.65) 50%, rgba(22,36,124,.9) 100%);
+  padding-left: 15px;
+  border-radius: 5px;
+  height: 200px;}
+#box-title {
+  margin-top: -5px;
+}
+.well {
+  color: black;
+  width: 95%;
+  height:85%;
+  margin-top: 10px;
+}
+#padded-container {
+  margin-top:260px
+}
 code {
   color: #DD0000; }
 ul {
