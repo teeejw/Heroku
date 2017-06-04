@@ -41,7 +41,7 @@
       <a href="/push">
         <div class="col-md-4">
           <div class="jumbotron" id="box">
-            <h4 id="box-title">Push</h4>
+            <h4 id="box-title"><div class="glyphicon glyphicon-link"></div> Push</h4>
             <div class="well">
               <text>This script pushes local changes to the website and updates the github repository.</text>
               <br/>
@@ -53,7 +53,7 @@
       <a href="/cascade">
         <div class="col-md-4">
           <div class="jumbotron" id="box">
-            <h4 id="box-title">Cascade Windows</h4>
+            <h4 id="box-title"><div class="glyphicon glyphicon-link"></div> Cascade Windows</h4>
             <div class="well">
               <text>This script organizes your finder windows.</text>
               <br/>
@@ -65,7 +65,7 @@
       <a href="/various">
         <div class="col-md-4">
           <div class="jumbotron" id="box">
-            <h4 id="box-title">Other Scripts</h4>
+            <h4 id="box-title"><div class="glyphicon glyphicon-link"></div> Other Scripts</h4>
             <div class="well">
               <text>This a collection of smaller scripts with less detailed discriptions.</text>
               <ul>
@@ -77,45 +77,43 @@
         </div>
       </a>
     </div>
-    <div class="container" id="padded-container">
-      <div class="row">
-        <div class="col-md-6">
-          <h3><span class="glyphicon glyphicon-link"></span> Web Dev Resources</h3>
-          <ul id="web-dev">
-              <h4>Design</h4>
+    <div class="row">
+      <div class="col-md-6"  id="web-dev">
+        <h3><span class="glyphicon glyphicon-link"></span> Web Dev Resources</h3>
+        <ul>
+            <h4>Design</h4>
+            <ul>
+              <li>Color scheme <a href="https://coolors.co/b09e99-fee9e1-fad4c0-64b6ac-c0fdfb">generator</a></li>
+            </ul>
+            <h4>Documentation</h4>
+            <ul>
+              <li>w3schools.com <a href="https://www.w3schools.com/html/default.asp"> HTML </a><a href="https://www.w3schools.com/css/default.asp"> CSS</a></li>
+              <li>Emmet: HTML and CSS <a href="https://docs.emmet.io/cheat-sheet/">cheatsheet</a></li>
+            </ul>
+            <h4>Development</h4>
+            <ul>
+              <li>I use <a href="https://atom.io/">Atom</a> with the plugins:</li>
               <ul>
-                <li>Color scheme <a href="https://coolors.co/b09e99-fee9e1-fad4c0-64b6ac-c0fdfb">generator</a></li>
+                <li><a href="https://atom.io/packages/open-in-browser"> open-broswer</a></li>
+                <li><a href="https://atom.io/packages/open-in-browser"> platformio-ide-terminal</a></li>
               </ul>
-              <h4>Documentation</h4>
-              <ul>
-                <li>w3schools.com <a href="https://www.w3schools.com/html/default.asp"> HTML </a><a href="https://www.w3schools.com/css/default.asp"> CSS</a></li>
-                <li>Emmet: HTML and CSS <a href="https://docs.emmet.io/cheat-sheet/">cheatsheet</a></li>
-              </ul>
-              <h4>Development</h4>
-              <ul>
-                <li>I use <a href="https://atom.io/">Atom</a> with the plugins:</li>
-                <ul>
-                    <li><a href="https://atom.io/packages/open-in-browser"> open-broswer</a></li>
-                    <li><a href="https://atom.io/packages/open-in-browser"> platformio-ide-terminal</a></li>
-                </ul>
-                <li>For when you're stuck <a href="https://stackoverflow.com/">stackoverflow</a></li>
-              </ul>
-          </ul>
-        </div>
-        <div class="col-md-6">
-          <h3><span class="glyphicon glyphicon-link"></span> FastScripts</h3>
-          <ul><li> Many of these scripts are much more useful if bound to a hotkey. I use <a href="https://red-sweater.com/fastscripts/">FastScripts</a> to make setting it up easy. <br/>To set up FastScripts <a href="https://red-sweater.com/fastscripts/FastScripts2.6.11.zip"> download</a> and install fastscripts, click on the fastscripts icon in your titlebar, select <code>FastScripts --> Preferences --> Open Scripts Folder</code>, drop your scripts into the folder, select <code>FastScripts --> Preferences --> Script Shortcuts</code>, and double click to edit the hotkey.</li></ul>
-        </div>
-        <div class="col-md-6">
-          <h3><span class="glyphicon glyphicon-info-sign"></span> How I made this website</h3>
-          <ul>
-            <li>This app was deployed to Heroku using <a href="/push">Push.scpt</a></li>
-            <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
-            <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
-          </ul>
-        </div>
+              <li>For when you're stuck <a href="https://stackoverflow.com/">stackoverflow</a></li>
+            </ul>
+        </ul>
       </div>
-      <div class="alert alert-info text-center" role="alert">To make your own website, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.</div>
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-link"></span> FastScripts</h3>
+        <ul><li> Many of these scripts are much more useful if bound to a hotkey. I use <a href="https://red-sweater.com/fastscripts/">FastScripts</a> to make setting it up easy. <br/>To set up FastScripts <a href="https://red-sweater.com/fastscripts/FastScripts2.6.11.zip"> download</a> and install fastscripts, click on the fastscripts icon in your titlebar, select <code>FastScripts --> Preferences --> Open Scripts Folder</code>, drop your scripts into the folder, select <code>FastScripts --> Preferences --> Script Shortcuts</code>, and double click to edit the hotkey.</li></ul>
+      </div>
+      <div class="col-md-6">
+        <h3><span class="glyphicon glyphicon-info-sign"></span> How I made this website</h3>
+        <ul>
+          <li>This app was deployed to Heroku using <a href="/push">Push.scpt</a></li>
+          <li>When Heroku received the source code, it fetched all the dependencies in the <a href="https://github.com/heroku/node-js-getting-started/blob/master/package.json">package.json</a>, creating a deployable slug.</li>
+          <li>The platform then spins up a dyno, a lightweight container that provides an isolated environment in which the slug can be mounted and executed.</li>
+        </ul>
+      </div>
     </div>
+    <div class="alert alert-info text-center" role="alert">To make your own website, head over to the <a href="https://devcenter.heroku.com/articles/getting-started-with-nodejs" class="alert-link">Getting Started with Node on Heroku</a> tutorial.</div>
   </body>
 </html>
