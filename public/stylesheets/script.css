@@ -11,6 +11,8 @@
   #inner:hover {
     background: radial-gradient(ellipse, #16247C 0%, #3891EA 80%);
   }
+#padded-text {
+  margin-left: 1em; }
   .jumbotron h4 {
     margin-top: -5px;
     padding-bottom: 5px;}
@@ -18,12 +20,12 @@
     margin-top: -20px; }
 .well {
   background: #E0E0DD;
-  font-size: 16px; }
+  font-size: 14px; }
   .well text {
     color: black;
     height:min;
     padding-bottom: 20px;
-    font-size:18px; }
+    font-size:16px; }
 #bolder {
     font-weight: 900; }
 #space {
