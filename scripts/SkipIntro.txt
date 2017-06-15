@@ -1,0 +1,14 @@
+--This script clicks the skip intro button on netflix (tested using google chrome with screen resolution 1440x900)
+--For this to work you must have Extra Suites installed
+tell application "System Events"
+	tell application "Extra Suites"
+		ES move mouse {1250, 690} --Skip button (not fullscreen)
+		ES click mouse
+		ES move mouse {1250, 720} --Skip button (fullscreen)
+		ES click mouse
+		ES move mouse {1270, 750} --Clicks fullscreen button if not already fullscreen
+		ES click mouse
+		ES move mouse {28, 790} --Closes ES pop-up (only needed for free version of Extra Suites)
+		ES click mouse
+	end tell
+end tell
