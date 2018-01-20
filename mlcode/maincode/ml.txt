@@ -1,0 +1,99 @@
+import BMP
+from numpy import around, array, dot, exp, random, zeros
+import sys
+
+#### Initialize Input ####
+inputArray = zeros((13,16*16))
+for i in range(0,10):
+	inputArray[i] = array(BMP.inputBMP("./digits/"+str(i)+".bmp"))
+inputArray[10] = array(BMP.inputBMP("./images/box_16x16.bmp"))
+inputArray[11] = array(BMP.inputBMP("./images/corners_16x16.bmp"))
+inputArray[12] = array(BMP.inputBMP("./images/cross_16x16.bmp"))
+
+# The first 10 inputs are digits, the last 3 are not
+# The . after the first entry is for print formatting
+outputArray = array([[1.,1,1,1,1,1,1,1,1,1,0,0,0]]).T
+
+# Squishes input, mapping negative to 0 and positive to 1
+def sigmoid(input, output):
+	return 1 / (1 + exp(-(dot(input, output))))
+
+# Prints out the value of each individual result
+def preciseTest(weights):
+	print "Precise Test"
+	print "\tDigit results: "
+	for i in range(0,10):
+		print "\t\t",i,": ", sigmoid(inputArray[i], weights)
+
+	print "\tImage results:"
+	print "\t\t","Box:     ", sigmoid(inputArray[10], weights)
+	print "\t\t","Corners: ", sigmoid(inputArray[11], weights)
+	print "\t\t","Cross:   ", sigmoid(inputArray[12], weights)
+	print "----------------------------------------------------------\n"
+
+def roundedTest(intputArray, weights, outputArray, pFlag = 'n'):
+	if (pFlag == 'b'): pFlag = 'p'
+	if (pFlag == 'p'): print "Rounded Test"
+
+	resultArray = zeros((13,1))
+
+	# Digit results
+	if (pFlag == 'p'): print "\tDigit results: "
+	for i in range(0,10):
+		testImage = array(BMP.inputBMP("./digits/"+str(i)+".bmp"))
+		resultArray[i] = 1 / (1 + exp(-(dot(testImage, weights))))
+
+		if(pFlag == 'p'): print "\t\t",i,": ",around(resultArray[i])
+	if (pFlag == 'p'): print ""
+
+	# Image results
+	if (pFlag == 'p'): print "\tImage results:"
+	resultArray[10] = sigmoid(inputArray[10], weights)
+	resultArray[11] = sigmoid(inputArray[11], weights)
+	resultArray[12] = sigmoid(inputArray[12], weights)
+
+	if (pFlag == 'p'):
+		print "\t\t","Box:     ", around(resultArray[10])
+		print "\t\t","Corners: ", around(resultArray[11])
+		print "\t\t","Cross:   ", around(resultArray[12])
+		print ""
+
+	# Check for errors
+	error = 0
+	for i in range (0,13):
+		# apparently you can't directly compare if these are equal
+		if ((outputArray[i] - around(resultArray[i])) != 0):
+			if (pFlag == 'p'): print "Error ( index",i,")"
+			error = 1
+
+	if (error == 0):
+		if (pFlag == 'p'): print "SUCCESS!"
+
+	print "----------------------------------------------------------\n"
+	return error
+
+def cycle(count, numTrainingIterations, weightRange, pFlag = 'n'):
+	errorCount = 0
+	for i in range(0,count):
+		if (pFlag == 'p'): print "CYCLE #",i+1,"/",count
+
+		# This line allows for consistent results
+		#random.seed(count)
+
+		weights = weightRange * random.random((256, 1)) - weightRange/2
+
+		#### Training ####
+		for iteration in xrange(numTrainingIterations):
+			output = sigmoid(inputArray, weights)
+			product = (outputArray - output) * output * (1 - output)
+			weights = weights + dot(inputArray.T, product)
+			if (pFlag == 'b'): preciseTest(weights)
+			if (pFlag == 'p'): print "\r",iteration,"/",numTrainingIterations,
+			sys.stdout.flush()
+		if (pFlag == 'p'): print "\r                                       \r",
+
+		errorCount += roundedTest(inputArray, weights, outputArray, pFlag)
+		
+	print errorCount, "Errors /", count, "Cycles using", numTrainingIterations,
+	print "Iterations", "and Weight Range", weightRange, "\n"
+	print "----------------------------------------------------------"

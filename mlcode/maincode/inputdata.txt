@@ -1,0 +1,8 @@
+inputArray = zeros((13,16*16))
+
+for i in range(0,10):
+	inputArray[i] = array(BMP.inputBMP("./digits/"+str(i)+".bmp"))
+	
+inputArray[10] = array(BMP.inputBMP("./images/box_16x16.bmp"))
+inputArray[11] = array(BMP.inputBMP("./images/corners_16x16.bmp"))
+inputArray[12] = array(BMP.inputBMP("./images/cross_16x16.bmp"))

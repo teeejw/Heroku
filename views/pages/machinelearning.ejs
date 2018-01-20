@@ -1,0 +1,151 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/machinelearning.css" />
+  </head>
+  <body>
+    <% include ../partials/nav.ejs %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.11.0/styles/xt256.min.css">
+    <div class="jumbotron text-center" id="image-banner">
+      <h1>Machine Learning</h1>
+      <h3>An Attempt at Digit Recognition</h3>
+      <div id="image-credit">
+        <a id="image-credit-link" href="https://pt.linkedin.com/pulse/barras-de-access-e-neuroci%C3%AAncia-faby-bastos">Image Credit</a>
+      </div>
+    </div>
+    <div class="jumbotron" id="main-content">
+      <h2>The idea</h2>
+      <div id="padded-text">
+        <text id="padded-text">
+          My initial idea was to create a neural network that could recognize handwritten digits. I realized soon after beginning the project that this goal was too ambitious for such a naive approach to machine learning. I had envisioned an application in which the user could draw images and test them on the network. Unfortunately, even under optimal conditions the network can only usually recognize the images it has been trained on about a quarter of the time. This meant user generated images were out of the question. I ended up creating a program that takes in a predefined set of 16x16 bmp files as input instead. Because the network doesn't work very well, the majority of this project became about testing the network's accuracy. I analyzed the performance of the network by varying the number of training iterations and the initial range of weights. 
+        </text>
+      </div>
+      <br>
+      <h2>How it works</h2>
+      <div id="padded-text">
+        <text id="padded-text">
+          The first step is to create the images to test the network on. I used <a href="http://www.xiconeditor.com/">x-icon editor</a> to create 13 16x16 bmp files.
+        </text>
+        <br>
+        <br>
+        <div class="noborder" id="picture-container">
+          <div class="noborder" id="picture-window">
+            <img id="picture-style" src="/nnImages/0.bmp">
+            <img id="picture-style" src="/nnImages/1.bmp">
+            <img id="picture-style" src="/nnImages/2.bmp">
+            <img id="picture-style" src="/nnImages/3.bmp">
+            <img id="picture-style" src="/nnImages/4.bmp">
+            <img id="picture-style" src="/nnImages/5.bmp">
+            <img id="picture-style" src="/nnImages/6.bmp">
+            <img id="picture-style" src="/nnImages/7.bmp">
+            <img id="picture-style" src="/nnImages/8.bmp">
+            <img id="picture-style" src="/nnImages/9.bmp">
+            <img id="picture-style" src="/nnImages/box_16x16.bmp">
+            <img id="picture-style" src="/nnImages/corners_16x16.bmp">
+            <img id="picture-style" src="/nnImages/cross_16x16.bmp">
+          </div>
+        </div>
+        <br>
+        <text id="padded-text">
+          The next step is to turn the pictures into data that can be input into the nextwork. I chose to average the RGB values of each pixel to produce a grayscale value with 0 representing black and 1 representing white. A more detailed explanation of BMP.py can be found <a href"">here</a>. I use numpy to create an array size 13 (the number of test images) by 16*16 (the size of each image). Then I call inputBMP from BMP and store the result in the array.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/inputdata.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          Then I create the output array to compare the results of the network to. The first 10 rows correspond to digit images so they are set to 1 and the last 3 correspond to shapes so they are set to 0. 
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/outputarray.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          It is easier to write the input as a single row and then transform it. The first entry is '1.' instead of '1' to make the output array print the same way as the rounded result array.
+        </text>
+        <br>
+        <text id="padded-text">
+          Next I populate the weights array with 16*16 random values. For simplicity there is only one layer of weights. The random values are bound by the weight range with an upper bound of weightRange/2 and a lower bound of -weightRange/2.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/weightarray.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          The next step is to calculate the sigmoid function. This takes the dot product of the inputArray and weights and maps each value in the resulting array to values between 0 and 1, giving us the output of the network. 
+        </text>
+        <br>
+        <br>
+        <div id="inline-image-container">
+          <img id="inline-image" src="/Sigmoid-function.png">
+        </div>
+        <br>
+        <text id="padded-text">
+          Next I adjust the weights proportionally to how incorrect the output is. To calculate the error I take the difference between the output array and the output of our sigmoid function. Next I adjust the weights according to how wrong the output is. I take the derivative of the sigmoid function and multiply it by the error. Then I take the dot product of that and the input array to weight our adujstments by how important the input is. Then each weight is adjusted by that value. This is done for each training iteration.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/propagate.txt %></code></pre>
+      </div>
+      <br>
+      <h2>Testing the state of the network</h2>
+      <div id="padded-text">
+        <h3>Precise Test</h3> 
+        <text id="padded-text">
+          This function prints the exact output of the function.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/precisetest.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          This is an example of the output of the preciseTest function.
+        </text>
+        <br>
+        <br>
+        <pre><% include ../../mlcode/maincode/precisetestoutput.txt %></pre>
+        <br>
+        <text id="padded-text">
+          Rounded Test checks if the output of the network matches the output array. It also uses a print flag to enable printing from roundedTest and to enable preciseTest.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/roundedtest.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          This is an example of the output of the roundedTest function.
+        </text>
+        <br>
+        <br>
+        <pre><% include ../../mlcode/maincode/roundedtestoutput.txt %></pre>
+        <br>
+        </div>
+      <br>
+      <h2>Using the network</h2>
+      <div id="padded-text">
+        <h3>Cycle</h3> 
+        <text id="padded-text">
+          While testing the network I developed a function to test the network. The parameters for the function are the number of cycles to run, the number of training iterations for each cycle, the weight range, and a print flag.
+        </text>
+        <br>
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/cycle.txt %></code></pre>
+        <br>
+        <text id="padded-text">
+          This is an example of the output of the cycle function.
+        </text>
+        <br>
+        <br>
+        <pre><% include ../../mlcode/maincode/cycleoutput.txt %></pre>
+        <br>
+      </div>
+      <h2>All the code</h2>
+      <div id="padded-text">
+        <br>
+        <pre><code class="python"><% include ../../mlcode/maincode/ml.txt %></code></pre>
+        <br>
+      </div>
+    </div>
+  </body>
+</html>

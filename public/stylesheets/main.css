@@ -58,7 +58,7 @@
 #well-text {
   margin-top: -5px;
   font-size: 16px;
-  font-family: "Verdana, Geneva, sans-serif"}
+  font-family: "Verdana, Geneva, sans-serif" }
 #display {
   height: 100%; }
   #display a {
@@ -74,6 +74,19 @@
     background: linear-gradient(180deg, #00C1F2 15%, #00A0C0 50%, #0080A0 85%);
     box-shadow: 1px 1px 1px 1px black; }
   #box ul {
+    list-style-type: square; }
+#top-box {
+  background: linear-gradient(180deg, #00C1F2 0%, #00A5CF 50%, #0084A5 100%);
+  margin: 3em;
+  margin-right: 3em;
+  padding-left: 15px;
+  border-radius: 5px;
+  box-shadow:2px 1px 2px 2px black ;
+  overflow: hidden; }
+  #top-box:hover {
+    background: linear-gradient(180deg, #00C1F2 15%, #00A0C0 50%, #0080A0 85%);
+    box-shadow: 1px 1px 1px 1px black; }
+  #top-box ul {
     list-style-type: square; }
 #box-title {
   margin-top: -5px; }

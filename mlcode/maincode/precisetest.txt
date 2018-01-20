@@ -1,0 +1,12 @@
+def preciseTest(weights):
+	print "Precise Test"
+	print "\tDigit results: "
+	for i in range(0,10):
+		print "\t\t",i,": ", sigmoid(inputArray[i], weights)
+		
+	print ""
+	print "\tImage results:"
+	print "\t\t","Box:     ", sigmoid(inputArray[10], weights)
+	print "\t\t","Corners: ", sigmoid(inputArray[11], weights)
+	print "\t\t","Cross:   ", sigmoid(inputArray[12], weights)
+	print "----------------------------------------------------------\n"

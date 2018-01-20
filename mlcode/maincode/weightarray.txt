@@ -1,0 +1,1 @@
+weights = weightRange * random.random((256, 1)) - weightRange/2

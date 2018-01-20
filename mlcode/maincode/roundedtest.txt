@@ -1,0 +1,40 @@
+def roundedTest(intputArray, weights, outputArray, pFlag = 'n'):
+	if (pFlag == 'b'): pFlag = 'p'
+	if (pFlag == 'p'): print "Rounded Test"
+
+	resultArray = zeros((13,1))
+
+	# Digit results
+	if (pFlag == 'p'): print "\tDigit results: "
+	for i in range(0,10):
+		testImage = array(BMP.inputBMP("./digits/"+str(i)+".bmp"))
+		resultArray[i] = 1 / (1 + exp(-(dot(testImage, weights))))
+
+		if(pFlag == 'p'): print "\t\t",i,": ",around(resultArray[i])
+	if (pFlag == 'p'): print ""
+
+	# Image results
+	if (pFlag == 'p'): print "\tImage results:"
+	resultArray[10] = sigmoid(inputArray[10], weights)
+	resultArray[11] = sigmoid(inputArray[11], weights)
+	resultArray[12] = sigmoid(inputArray[12], weights)
+
+	if (pFlag == 'p'):
+		print "\t\t","Box:     ", around(resultArray[10])
+		print "\t\t","Corners: ", around(resultArray[11])
+		print "\t\t","Cross:   ", around(resultArray[12])
+		print ""
+
+	# Check for errors
+	error = 0
+	for i in range (0,13):
+		# apparently you can't directly compare if these are equal
+		if ((outputArray[i] - around(resultArray[i])) != 0):
+			if (pFlag == 'p'): print "Error ( index",i,")"
+			error = 1
+
+	if (error == 0):
+		if (pFlag == 'p'): print "SUCCESS!"
+
+	print "----------------------------------------------------------\n"
+	return error

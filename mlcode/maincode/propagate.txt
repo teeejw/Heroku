@@ -1,0 +1,9 @@
+def sigmoid(input, output):
+	return 1 / (1 + exp(-(dot(input, output))))
+
+for iteration in xrange(numTrainingIterations):
+	output     = sigmoid(inputArray, weights)
+	error      = outputArray - output
+	derivative = output * (1 - output)
+	product    = error * derivative
+	weights    = weights + dot(inputArray.T, product)
