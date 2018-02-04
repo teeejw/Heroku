@@ -3,7 +3,7 @@ var router = express.Router();
 
 
 router.get('/', function(request, response) {
-    response.render('./pages/machinelearning');
+    response.render('./pages/bmp');
 });
 
 module.exports = router;

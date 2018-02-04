@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <% include ../partials/header.ejs %>
+    <link rel="stylesheet" type="text/css" href="/stylesheets/machinelearning.css" />
+  </head>
+  <body>
+    <% include ../partials/nav.ejs %>
+    <link rel="stylesheet" href="//cdn.jsdelivr.net/highlight.js/9.11.0/styles/xt256.min.css">
+    <div class="jumbotron text-center" id="image-banner">
+      <h1>BMP</h1>
+      <h3>Turning images into data</h3>
+    </div>
+    <div class="jumbotron" id="main-content">
+      <h2>The Code</h2>
+      <div id="padded-text">
+        <pre><code class="python"><% include ../../mlcode/bmpcode/bmp.txt %></code></pre>
+      </div>
+    </div>
+  </body>
+</html>

@@ -48,7 +48,7 @@
         </div>
         <br>
         <text id="padded-text">
-          The next step is to turn the pictures into data that can be input into the nextwork. I chose to average the RGB values of each pixel to produce a grayscale value with 0 representing black and 1 representing white. A more detailed explanation of BMP.py can be found <a href"">here</a>. I use numpy to create an array size 13 (the number of test images) by 16*16 (the size of each image). Then I call inputBMP from BMP and store the result in the array.
+          The next step is to turn the pictures into data that can be input into the network. I chose to average the RGB values of each pixel to produce a gray-scale value with 0 representing black and 1 representing white. The full text of BMP.py can be found <a href="/bmp">here</a>. BMP.py is hard coded to work with uncompressed 24b and 32b pixel .bmp files. It normalizes the RGB values of each pixel to a value between 0 and one and puts them into an array. This array is what gets passed to ml.py. singI use numpy to create an array size 13 (the number of test images) by 16*16 (the size of each image). Then I call inputBMP from BMP and store the result in the array.
         </text>
         <br>
         <br>
@@ -82,7 +82,7 @@
         </div>
         <br>
         <text id="padded-text">
-          Next I adjust the weights proportionally to how incorrect the output is. To calculate the error I take the difference between the output array and the output of our sigmoid function. Next I adjust the weights according to how wrong the output is. I take the derivative of the sigmoid function and multiply it by the error. Then I take the dot product of that and the input array to weight our adujstments by how important the input is. Then each weight is adjusted by that value. This is done for each training iteration.
+          Next I adjust the weights proportionally to how incorrect the output is. To calculate the error I take the difference between the output array and the output of our sigmoid function. Next I adjust the weights according to how wrong the output is. I take the derivative of the sigmoid function and multiply it by the error. Then I take the dot product of that and the input array to weight our adjustments by how important the input is. Then each weight is adjusted by that value. This is done for each training iteration.
         </text>
         <br>
         <br>
@@ -111,7 +111,7 @@
         </text>
         <br>
         <br>
-        <pre><code class="python"><% include ../../mlcode/maincode/roundedtest.txt %></code></pre>
+        <pre><code class="python" id="scroll"><% include ../../mlcode/maincode/roundedtest.txt %></code></pre>
         <br>
         <text id="padded-text">
           This is an example of the output of the roundedTest function.
@@ -138,6 +138,46 @@
         <br>
         <br>
         <pre><% include ../../mlcode/maincode/cycleoutput.txt %></pre>
+        <br>
+      </div>
+      <h2>The Results</h2>
+      <div id="padded-text">
+        <h3>Analysis</h3> 
+        <text id="padded-text">
+          First I wanted to see how it got better with each iteration. I averaged the results from 100 cycles at different numbers of iterations. I found that the algorithm gets more accurate logarithmically.
+        </text>
+        <br>
+        <br>
+        <div class="noborder" id="graph-container">
+            <img id="graph-style" src="/bmpimages/Failure Rate vs Number Iterations.png">
+        </div>
+        <br>
+        <text id="padded-text">
+          Then I experimented with different weight ranges and plotted the results. It turns out that the best weight range was 1.3 instead of 2 like I had started with.
+        </text>
+        <br>
+        <br>
+        <div class="noborder" id="graph-container">
+            <img id="graph-style" src="/bmpimages/Failure Rate vs Weight Range.png">
+        </div>
+        <br>
+        <text id="padded-text">
+          Next I repeated my original test at a weight range of 1.3 instead of 2.0 still taking the average over 100 cycles at each iteration.
+        </text>
+        <br>
+        <br>
+        <div class="noborder" id="graph-container">
+            <img id="graph-style" src="/bmpimages/Failure Rate vs Number Iterations at best WR.png">
+        </div>
+        <br>
+        <text id="padded-text">
+          Then I put that data on top of the data from the first test. You can see that using 1.3 as the weight range led to a fairly significant improvement.
+        </text>
+        <br>
+        <br>
+        <div class="noborder" id="graph-container">
+            <img id="graph-style" src="/bmpimages/Failure Rate vs Number Iterations comparison.png">
+        </div>
         <br>
       </div>
       <h2>All the code</h2>
